@@ -8,6 +8,7 @@ class Exercise(models.Model):
     """
     name:str = models.CharField(max_length=255)
     desc:str = models.CharField(max_length=255)
+    image_link:str = models.CharField(max_length=1000, null=True)
     link:str = models.CharField(max_length=255, blank=True)
     is_base:bool = models.BooleanField(default=False)
 

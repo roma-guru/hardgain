@@ -18,6 +18,7 @@ from django.conf.urls import url, include
 from schedule.models import *
 from rest_framework import routers, serializers, viewsets
 
+# TODO: separate serializers
 # Serializers define the API representation.
 class ExerciseSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -30,6 +31,7 @@ class ExerciseViewSet(viewsets.ModelViewSet):
     serializer_class = ExerciseSerializer
 
 # Routers provide an easy way of automatically determining the URL conf.
+# TODO: API versioning
 router = routers.DefaultRouter()
 router.register(r'exercises', ExerciseViewSet)
 

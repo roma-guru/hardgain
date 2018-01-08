@@ -1,7 +1,4 @@
 Django==2.0
 djangorestframework==3.7.7
-
-# Debug
-ipython
-werkzeug
-django_extensions
+gunicorn
+psycopg2

@@ -8,6 +8,7 @@ class Exercise(models.Model):
     """
     name:str = models.CharField(max_length=255)
     desc:str = models.CharField(max_length=255, blank=True)
+    sets:str = models.CharField(max_length=255, blank=True)
     image_link:str = models.CharField(max_length=1000, blank=True)
     link:str = models.CharField(max_length=255, blank=True)
     comment:str = models.TextField(blank=True)
@@ -37,15 +38,15 @@ class ScheduleDay(models.Model):
     scheduled exercises. Linked to Cycle.
     """
     WEEKDAYS = (
-        ('Mon', 'Понедельник'),
-        ('Tue', 'Вторник'),
-        ('Wed', 'Среда'),
-        ('Thu', 'Четверг'),
-        ('Fri', 'Пятница'),
-        ('Sat', 'Суббота'),
-        ('Sun', 'Воскресение'),
+        (0, 'Понедельник'),
+        (1, 'Вторник'),
+        (2, 'Среда'),
+        (3, 'Четверг'),
+        (4, 'Пятница'),
+        (5, 'Суббота'),
+        (6, 'Воскресение'),
     )
-    weekday = models.CharField(max_length=5, choices=WEEKDAYS)
+    weekday = models.SmallIntegerField(choices=WEEKDAYS)
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE, related_name='schedule')
     exercises = models.ManyToManyField(Exercise)
     comment:str = models.TextField(blank=True)

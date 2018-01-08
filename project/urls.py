@@ -15,29 +15,50 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url, include
+from rest_framework import routers, viewsets
+
 from schedule.models import *
-from rest_framework import routers, serializers, viewsets
+from schedule.serializers import *
+from progress.models import *
+from progress.serializers import *
 
-# TODO: separate serializers
-# Serializers define the API representation.
-class ExerciseSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Exercise
-        fields = '__all__'
-
-# ViewSets define the view behavior.
+### DRF Viewsets
 class ExerciseViewSet(viewsets.ModelViewSet):
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer
 
-# Routers provide an easy way of automatically determining the URL conf.
-# TODO: API versioning
-router = routers.DefaultRouter()
-router.register(r'exercises', ExerciseViewSet)
+class CycleViewSet(viewsets.ModelViewSet):
+    queryset = Cycle.objects.all()
+    serializer_class = CycleSerializer
 
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
+class ScheduleDayViewSet(viewsets.ModelViewSet):
+    queryset = ScheduleDay.objects.all()
+    serializer_class = ScheduleDaySerializer
+
+class TrainDayViewSet(viewsets.ModelViewSet):
+    queryset = TrainDay.objects.all()
+    serializer_class = TrainDaySerializer
+
+class TrainResultViewSet(viewsets.ModelViewSet):
+    queryset = TrainResult.objects.all()
+    serializer_class = TrainResultSerializer
+
+
+### DRF Routers
+router = routers.DefaultRouter()
+
+# Schedule app
+router.register(r'exercises', ExerciseViewSet)
+router.register(r'cycles', CycleViewSet)
+router.register(r'schedule', ScheduleDayViewSet)
+
+# Progress app
+router.register(r'trainings', TrainDayViewSet)
+router.register(r'results', TrainResultViewSet)
+
+
+### URL Patterns
 urlpatterns = [
-    url(r'^schedule/', include(router.urls)),
+    url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
 ]

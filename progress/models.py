@@ -5,7 +5,11 @@ from datetime import date
 class TrainDay(models.Model):
     program:ScheduleDay = models.ForeignKey(ScheduleDay, null=True, on_delete=models.SET_NULL)
     date:date = models.DateField()
-    mood:str = models.CharField(max_length=5)
+    mood:str = models.CharField(max_length=5, help_text=
+    '''😀 😁 😂 😃 😄 😅 😆 😇 😈 😉 😊 😋 😌 😍 😎 😏 😐 😑 
+😒 😓 😔 😕 😖 😗 😘 😙 😚 😛 😜 😝 😞 😟 😠 😡 😢 😣 😤 😥 😦 
+😧 😨 😩 😪 😫 😬 😭 😮 😯 😰 😱 😲 😳 😴 😵 😶 😷 🙁 🙂 🙃 🙄 
+    ''')
     comment:str = models.TextField(blank=True)
 
     def __str__(self):

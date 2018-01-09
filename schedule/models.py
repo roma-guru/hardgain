@@ -46,10 +46,11 @@ class ScheduleDay(models.Model):
         (5, 'Суббота'),
         (6, 'Воскресение'),
     )
+    _weekdays_dict = dict(WEEKDAYS)
     weekday = models.SmallIntegerField(choices=WEEKDAYS)
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE, related_name='schedule')
     exercises = models.ManyToManyField(Exercise)
     comment:str = models.TextField(blank=True)
 
     def __str__(self):
-        return f"{self.cycle}: {self.weekday}"
+        return f"{self.cycle}: {self._weekdays_dict[self.weekday]}"

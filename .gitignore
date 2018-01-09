@@ -106,3 +106,6 @@ venv.bak/
 # SQLite db
 *.db
 *.sqlite3
+
+# Vim sessions
+*.vim

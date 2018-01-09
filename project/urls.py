@@ -1,4 +1,5 @@
-"""URL Configuration
+"""
+URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -15,36 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url, include
-from rest_framework import routers, viewsets
+from rest_framework import routers
 
-from schedule.models import *
-from schedule.serializers import *
-from progress.models import *
-from progress.serializers import *
-
-### DRF Viewsets
-class ExerciseViewSet(viewsets.ModelViewSet):
-    queryset = Exercise.objects.all()
-    serializer_class = ExerciseSerializer
-
-class CycleViewSet(viewsets.ModelViewSet):
-    queryset = Cycle.objects.all()
-    serializer_class = CycleSerializer
-
-class ScheduleDayViewSet(viewsets.ModelViewSet):
-    queryset = ScheduleDay.objects.all()
-    serializer_class = ScheduleDaySerializer
-
-class TrainDayViewSet(viewsets.ModelViewSet):
-    queryset = TrainDay.objects.all()
-    serializer_class = TrainDaySerializer
-
-class TrainResultViewSet(viewsets.ModelViewSet):
-    queryset = TrainResult.objects.all()
-    serializer_class = TrainResultSerializer
+from schedule.views import *
+from progress.views import *
 
 
-### DRF Routers
 router = routers.DefaultRouter()
 
 # Schedule app

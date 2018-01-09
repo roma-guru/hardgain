@@ -5,7 +5,7 @@ from schedule.models import *
 
 @admin.register(Exercise)
 class ExerciseAdmin(admin.ModelAdmin):
-    list_display = ('html_img', 'is_base', 'name', 'desc', 'html_a')
+    list_display = ('name', 'is_base', 'html_img', 'desc', 'html_a')
 
     def html_img(self, obj):
         return format_html(f"<img height='100px' src='{obj.image_link}'></img>")

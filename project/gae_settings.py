@@ -58,7 +58,7 @@ DATABASES = {
         'NAME': 'hardgain',
         'USER': 'hardgain',
         'PASSWORD': '100kg_gym',
-        'HOST': '/cloudsql/cloudtest-171813:europe-west1:test-cloud-sql',
+        'HOST': '/cloudsql/hard-gain:europe-west1:hardgain-db',
         'PORT': '5432',
     }
 }

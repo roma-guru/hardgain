@@ -5,7 +5,7 @@ env_variables:
 entrypoint: gunicorn -b :$PORT project.wsgi
 
 beta_settings:
-    cloud_sql_instances: cloudtest-171813:europe-west1:test-cloud-sql
+    cloud_sql_instances: hard-gain:europe-west1:hardgain-db
 
 runtime_config:
   python_version: 3

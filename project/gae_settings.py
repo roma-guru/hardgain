@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.staticfiles',
     'django.contrib.sessions',
     'rest_framework',
     'schedule',
@@ -57,7 +58,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'hardgain',
         'USER': 'hardgain',
-        'PASSWORD': '100kg_gym',
+        'PASSWORD': 'hardgain',
         'HOST': '/cloudsql/hard-gain:europe-west1:hardgain-db',
         'PORT': '5432',
     }
@@ -90,7 +91,7 @@ USE_L10N = False
 USE_TZ = True
 
 
-STATIC_URL = 'https://storage.googleapis.com/test-cloud-storage-for-django/static/'
+STATIC_URL = 'https://storage.googleapis.com/hard-gain-static/'
 
 
 # Django Rest Framework

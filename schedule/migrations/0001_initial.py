@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Cycle',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('start_date', models.DateField()),
                 ('end_date', models.DateField()),
                 ('comment', models.CharField(blank=True, max_length=255)),
@@ -24,7 +25,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Exercise',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
                 ('desc', models.CharField(max_length=255)),
                 ('link', models.CharField(blank=True, max_length=255)),
@@ -34,10 +36,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ScheduleDay',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('weekday', models.CharField(choices=[('Mon', 'Monday'), ('Tue', 'Tuesday'), ('Wed', 'Wednesday'), ('Thu', 'Thursday'), ('Fri', 'Friday'), ('Sat', 'Saturday'), ('Sun', 'Sunday')], max_length=15)),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('weekday', models.CharField(choices=[('Mon', 'Monday'), ('Tue', 'Tuesday'), ('Wed', 'Wednesday'), (
+                    'Thu', 'Thursday'), ('Fri', 'Friday'), ('Sat', 'Saturday'), ('Sun', 'Sunday')], max_length=15)),
                 ('comment', models.CharField(blank=True, max_length=255)),
-                ('cycle', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='schedule', to='schedule.Cycle')),
+                ('cycle', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                            related_name='schedule', to='schedule.Cycle')),
                 ('exercises', models.ManyToManyField(to='schedule.Exercise')),
             ],
         ),

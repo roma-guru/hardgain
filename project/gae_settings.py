@@ -1,7 +1,5 @@
 """
 Google App Engine settings for HardGain project.
-Very minimized (removed apps and middleware).
-TODO: read settings from .env
 """
 
 import os

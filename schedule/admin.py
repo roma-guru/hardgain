@@ -3,6 +3,7 @@ from django.utils.html import format_html
 
 from schedule.models import *
 
+
 @admin.register(Exercise)
 class ExerciseAdmin(admin.ModelAdmin):
     list_display = ('name', 'is_base', 'html_img', 'desc', 'html_a')
@@ -17,11 +18,13 @@ class ExerciseAdmin(admin.ModelAdmin):
         return format_html(f"<a target='_blank' href='{obj.link}'>Ссылка</a>")
     html_a.short_description = 'Link'
 
+
 @admin.register(Cycle)
 class CycleAdmin(admin.ModelAdmin):
     list_display = ('name', 'active', 'start_date', 'end_date', 'completed')
     list_filter = ('active', 'completed')
     search_fields = ('name',)
+
 
 @admin.register(ScheduleDay)
 class ScheduleDay(admin.ModelAdmin):

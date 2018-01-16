@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='scheduleday',
             name='weekday',
-            field=models.CharField(choices=[('Mon', 'Понедельник'), ('Tue', 'Вторник'), ('Wed', 'Среда'), ('Thu', 'Четверг'), ('Fri', 'Пятница'), ('Sat', 'Суббота'), ('Sun', 'Воскресение')], max_length=5),
+            field=models.CharField(choices=[('Mon', 'Понедельник'), ('Tue', 'Вторник'), ('Wed', 'Среда'), (
+                'Thu', 'Четверг'), ('Fri', 'Пятница'), ('Sat', 'Суббота'), ('Sun', 'Воскресение')], max_length=5),
         ),
     ]

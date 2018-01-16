@@ -34,7 +34,7 @@ router.register(r'trainings', TrainDayViewSet)
 router.register(r'results', TrainResultViewSet)
 
 
-### URL Patterns
+# URL Patterns
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),

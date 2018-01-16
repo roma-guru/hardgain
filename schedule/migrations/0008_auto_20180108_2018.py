@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='scheduleday',
             name='weekday',
-            field=models.SmallIntegerField(choices=[(0, 'Понедельник'), (1, 'Вторник'), (2, 'Среда'), (3, 'Четверг'), (4, 'Пятница'), (5, 'Суббота'), (6, 'Воскресение')]),
+            field=models.SmallIntegerField(choices=[(0, 'Понедельник'), (1, 'Вторник'), (
+                2, 'Среда'), (3, 'Четверг'), (4, 'Пятница'), (5, 'Суббота'), (6, 'Воскресение')]),
         ),
     ]

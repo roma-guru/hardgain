@@ -38,4 +38,5 @@ router.register(r'results', TrainResultViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^today/', TodayView.as_view()),
 ]

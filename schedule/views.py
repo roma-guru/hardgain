@@ -37,15 +37,22 @@ class TodayView(views.APIView):
         # TODO: add time interval check?
         cycle = Cycle.objects.get(active=True)
         log.debug(f"cycle={cycle}")
-        sched = ScheduleDay.objects.get(cycle=cycle, weekday=today.weekday())
-        log.debug(f"sched={sched}")
-        program = []
-        # Get exercises list with max weights
-        for ex in sched.exercises.all():
-            best_res = TrainResult.objects.filter(exercise=ex,
-                    day__program__cycle=cycle).aggregate(Max('result'))
-            program.append({'name': ex.name,
-                'pic': ex.image_link, 'last': best_res['result__max']})
+
+        try:
+            sched = ScheduleDay.objects.get(cycle=cycle, weekday=today.weekday())
+            log.debug(f"sched={sched}")
+            program = []
+            # Get exercises list with max weights
+            for ex in sched.exercises.all():
+                best_res = TrainResult.objects.filter(exercise=ex,
+                        day__program__cycle=cycle).aggregate(Max('result'))
+                program.append({'name': ex.name,
+                    'pic': ex.image_link, 'last': best_res['result__max']})
+        except ScheduleDay.DoesNotExist:
+            # Relax today
+            log.info("Have nothing to do today!")
+            program = None
+
         resp = {'today': today,
                 'cycle': CycleSerializer(cycle).data,
                 'program': program,

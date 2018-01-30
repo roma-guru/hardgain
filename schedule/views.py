@@ -46,8 +46,10 @@ class TodayView(views.APIView):
             for ex in sched.exercises.all():
                 best_res = TrainResult.objects.filter(exercise=ex,
                         day__program__cycle=cycle).aggregate(Max('result'))
-                program.append({'name': ex.name,
-                    'pic': ex.image_link, 'last': best_res['result__max']})
+                ex_serialized = ExerciseSerializer(ex,
+                        context={'request':request}).data
+                ex_serialized['result'] = best_res['result__max']
+                program.append(ex_serialized)
         except ScheduleDay.DoesNotExist:
             # Relax today
             log.info("Have nothing to do today!")

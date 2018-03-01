@@ -109,3 +109,7 @@ venv.bak/
 
 # Vim sessions
 *.vim
+
+# Ctags
+tags
+TAGS

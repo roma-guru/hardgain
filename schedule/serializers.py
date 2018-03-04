@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import *
 
 
-class ExerciseSerializer(serializers.HyperlinkedModelSerializer):
+class ExerciseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exercise
         fields = '__all__'

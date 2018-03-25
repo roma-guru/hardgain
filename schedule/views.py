@@ -38,7 +38,8 @@ class DayView(views.APIView):
         log.info(f"Requesting program for {day}")
         today = datetime.strptime(day, '%Y-%m-%d').date()
         cycle = Cycle.objects.get(active=True,
-                                  start_date__lt=today, end_date__gt=today)
+                                  start_date__lt=today,
+                                  end_date__gt=today)
         log.debug(f"cycle={cycle}")
 
         try:

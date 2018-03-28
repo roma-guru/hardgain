@@ -19,7 +19,7 @@ SECRET_KEY = '49!c0n@i9j^4#sx0766vv+a25)pf_mo)2r34z!%(z7vf6x*l=m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'l', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,8 +47,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # Needed only in DEBUG
-    'project.middleware.CORSMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -168,5 +166,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
-CORS_ORIGIN_WHITELIST = ["localhost:3000",]
+# CORS_ORIGIN_WHITELIST = ["localhost:3000",]
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True

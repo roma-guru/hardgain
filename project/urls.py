@@ -35,9 +35,9 @@ router.register(r'results', TrainResultViewSet)
 
 # URL Patterns
 urlpatterns = [
-    url(r'^api/day/(?P<day>\d{4}-\d{2}-\d{2})',
+    url(r'^api/day/(?P<day>\d{4}-\d{2}-\d{2})$',
         DayView.as_view()),
-    url(r'^api/day/(?P<day>\d{4}-\d{2}-\d{2})/complete_exercise',
+    url(r'^api/day/(?P<day>\d{4}-\d{2}-\d{2})/complete_exercise$',
         CompleteExerciseView.as_view()),
     url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),

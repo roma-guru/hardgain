@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from datetime import date
 
 
@@ -30,6 +31,7 @@ class Cycle(models.Model):
     comment: str = models.TextField(blank=True)
     active: bool = models.BooleanField(default=True)
     completed: bool = models.BooleanField(default=False)
+    user: User = models.ForeignField(User)
 
     def __str__(self):
         return self.name

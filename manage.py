@@ -2,6 +2,7 @@
 import os
 import sys
 
+
 def print_logo():
     """
     Print's project's beautiful logo!

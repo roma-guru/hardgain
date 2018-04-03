@@ -16,5 +16,5 @@ class CycleSerializer(serializers.ModelSerializer):
 
 class ScheduleDaySerializer(serializers.ModelSerializer):
     class Meta:
-        model = ScheduleDay
+        model = DayProgram
         fields = '__all__'

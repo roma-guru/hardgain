@@ -21,9 +21,9 @@ class CycleViewSet(viewsets.ModelViewSet):
     serializer_class = CycleSerializer
 
 
-class ScheduleDayViewSet(viewsets.ModelViewSet):
-    """ ScheduleDays CRUD. """
-    queryset = ScheduleDay.objects.all()
+class DayProgramViewSet(viewsets.ModelViewSet):
+    """ DayProgram CRUD. """
+    queryset = DayProgram.objects.all()
     serializer_class = ScheduleDaySerializer
 
 
@@ -43,7 +43,7 @@ class DayView(views.APIView):
         log.debug(f"cycle={cycle}")
 
         try:
-            sched = ScheduleDay.objects.get(
+            sched = DayProgram.objects.get(
                 cycle=cycle, weekday=today.weekday())
             log.debug(f"sched={sched}")
             program = []
@@ -55,7 +55,7 @@ class DayView(views.APIView):
                                                    context={'request': request}).data
                 ex_serialized['result'] = best_res['result__max']
                 program.append(ex_serialized)
-        except ScheduleDay.DoesNotExist:
+        except DayProgram.DoesNotExist:
             # Relax today
             log.info("Have nothing to do today!")
             program = None

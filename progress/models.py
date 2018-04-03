@@ -4,8 +4,9 @@ from datetime import date
 
 
 class TrainDay(models.Model):
-    program: ScheduleDay = models.ForeignKey(
-        ScheduleDay, null=True, on_delete=models.SET_NULL)
+    user: User = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    program: DayProgram = models.ForeignKey(
+        DayProgram, null=True, on_delete=models.SET_NULL)
     date: date = models.DateField()
     mood: str = models.CharField(max_length=5, help_text='''😀 😁 😂 😃 😄 😅 😆 😇 😈 😉 😊 😋 😌 😍 😎 😏 😐 😑 
 😒 😓 😔 😕 😖 😗 😘 😙 😚 😛 😜 😝 😞 😟 😠 😡 😢 😣 😤 😥 😦 
@@ -18,6 +19,7 @@ class TrainDay(models.Model):
 
 
 class TrainResult(models.Model):
+    user: User = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     day: TrainDay = models.ForeignKey(TrainDay, on_delete=models.CASCADE)
     exercise: Exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
     result: float = models.FloatField()

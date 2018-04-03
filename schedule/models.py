@@ -31,13 +31,13 @@ class Cycle(models.Model):
     comment: str = models.TextField(blank=True)
     active: bool = models.BooleanField(default=True)
     completed: bool = models.BooleanField(default=False)
-    user: User = models.ForeignField(User)
+    user: User = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
 
 
-class ScheduleDay(models.Model):
+class DayProgram(models.Model):
     """
     Weekday microtraining program - includes weekday and
     scheduled exercises. Linked to Cycle.
@@ -57,6 +57,7 @@ class ScheduleDay(models.Model):
         Cycle, on_delete=models.CASCADE, related_name='schedule')
     exercises = models.ManyToManyField(Exercise)
     comment: str = models.TextField(blank=True)
+    user: User = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f"{self.cycle}: {self._weekdays_dict[self.weekday]}"

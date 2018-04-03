@@ -26,8 +26,8 @@ class CycleAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 
-@admin.register(ScheduleDay)
-class ScheduleDay(admin.ModelAdmin):
+@admin.register(DayProgram)
+class DayProgram(admin.ModelAdmin):
     list_display = ('cycle', 'weekday')
     list_filter = list_display
     filter_horizontal = ('exercises',)

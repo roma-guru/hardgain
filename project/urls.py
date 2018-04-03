@@ -27,7 +27,7 @@ router = routers.DefaultRouter()
 # Schedule app
 router.register(r'exercises', ExerciseViewSet)
 router.register(r'cycles', CycleViewSet)
-router.register(r'schedule', ScheduleDayViewSet)
+router.register(r'program', DayProgramViewSet)
 
 # Progress app
 router.register(r'trainings', TrainDayViewSet)

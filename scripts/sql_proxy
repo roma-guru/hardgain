@@ -1,3 +1,0 @@
-#!/bin/bash
-
-cloud_sql_proxy -instances=hard-gain:europe-west1:hardgain-db=tcp:5432

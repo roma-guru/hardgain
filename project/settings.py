@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'rest_framework',
+    'djoser',
     'schedule',
     'progress',
 ]
@@ -164,3 +165,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+# Login urls
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = "/auth/login"

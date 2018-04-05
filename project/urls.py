@@ -41,5 +41,7 @@ urlpatterns = [
         CompleteExerciseView.as_view()),
     url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^auth/', include('django.contrib.auth.urls')),
+    url(r'^rest-auth/', include('djoser.urls')),
+    url(r'^rest-auth/', include('djoser.urls.jwt')),
 ]
